@@ -22,5 +22,9 @@ public class MainClass {
 
         HelloWorld helloWorldByConstructor = context.getBean("helloWordConstructor", HelloWorld.class);
         helloWorldByConstructor.print();
+
+        System.out.println("------------------------");
+        Factory factory = context.getBean("factory", Factory.class);
+        factory.doWork();
     }
 }
