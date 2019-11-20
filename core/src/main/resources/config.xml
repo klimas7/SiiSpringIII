@@ -9,4 +9,14 @@
     <!-- Use no args constructor -->
     <bean id="helloWorld" class="pl.sii.spring.core.xml.HelloWorld">
     </bean>
+
+    <!-- Set value by properties -->
+    <bean id="helloWorldSetter" class="pl.sii.spring.core.xml.HelloWorld">
+        <property name="message" value="Hello Sii People!!"/>
+    </bean>
+
+    <!-- Set value as constructor -->
+    <bean id="helloWordConstructor" class="pl.sii.spring.core.xml.HelloWorld">
+        <constructor-arg value="Hello Sii People !! from constructor"/>
+    </bean>
 </beans>

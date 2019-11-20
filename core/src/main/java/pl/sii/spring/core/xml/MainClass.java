@@ -17,5 +17,10 @@ public class MainClass {
         helloWorld.setMessage("test");
         helloWorld.print();
 
+        HelloWorld helloWorldBySetter = (HelloWorld) context.getBean("helloWorldSetter");
+        helloWorldBySetter.print();
+
+        HelloWorld helloWorldByConstructor = context.getBean("helloWordConstructor", HelloWorld.class);
+        helloWorldByConstructor.print();
     }
 }
