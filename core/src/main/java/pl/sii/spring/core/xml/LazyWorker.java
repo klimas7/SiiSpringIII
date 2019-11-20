@@ -13,4 +13,8 @@ public class LazyWorker implements Worker {
     public void doWork() {
         System.out.println("I'am lazy worker nr: " + uuid);
     }
+
+    private void born() {
+        System.out.println("Born a lazy worker nr: " + uuid);
+    }
 }

@@ -13,4 +13,8 @@ public class HardWorker implements Worker {
     public void doWork() {
         System.out.println("I'am hard worker nr: " + uuid);
     }
+
+    private void born() {
+        System.out.println("Born a hard worker nr: " + uuid);
+    }
 }

@@ -21,9 +21,11 @@
         <constructor-arg value="Hello Sii People !! from constructor2" index="0"/>
     </bean>
 
-    <bean id="lazyWorker" class="pl.sii.spring.core.xml.LazyWorker" scope="prototype" />
-    <bean id="hardWorker" class="pl.sii.spring.core.xml.HardWorker"/> <!-- scope="singleton" -->
-    <bean id="bestWorker" class="pl.sii.spring.core.xml.HardWorker"/>
+    <bean id="lazyWorker" class="pl.sii.spring.core.xml.LazyWorker" scope="prototype" init-method="born"/>
+    <bean id="hardWorker" class="pl.sii.spring.core.xml.HardWorker" init-method="born"/> <!-- scope="singleton" -->
+    <bean id="bestWorker" class="pl.sii.spring.core.xml.HardWorker" init-method="born"/>
+
+    <!-- init method invoke in 'AbstractAutowireCapableBeanFactory' -> invokeCustomInitMethod -->
 
     <bean id="factory" class="pl.sii.spring.core.xml.Factory">
         <property name="workers">
@@ -38,4 +40,6 @@
         <property name="bestWorker" ref="bestWorker"/>
         <property name="theMostLazyWorker" ref="lazyWorker"/>
     </bean>
+
+    <!-- Scope 'AbstractBeanFactory -> doGetBean -> -->
 </beans>
