@@ -1,5 +1,6 @@
 package pl.sii.spring.core.annotation;
 
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -8,6 +9,7 @@ import java.util.UUID;
 
 @Component
 @Scope(value = "prototype")
+@Lazy
 public class LazyWorker implements Worker {
     private String uuid;
 

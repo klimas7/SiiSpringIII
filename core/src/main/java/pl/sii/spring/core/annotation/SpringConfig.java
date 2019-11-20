@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 
 @Configuration
@@ -25,16 +26,19 @@ public class SpringConfig {
     }
 
     @Bean
+    @Lazy
     public Worker bestWorker() {
         return ctx.getBean("hardWorker", Worker.class);
     }
 
     @Bean
+    @Lazy
     public Worker bestWorkerOne() {
         return ctx.getBean("hardWorker", Worker.class);
     }
 
     @Bean
+    @Lazy
     public Worker bestWorkerTwo() {
         return ctx.getBean("hardWorker", Worker.class);
     }
