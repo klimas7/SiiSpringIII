@@ -18,5 +18,9 @@ public class MainClass {
 
         HelloWorld helloWorldBySetter = (HelloWorld) context.getBean("helloWorldSetter");
         helloWorldBySetter.print();
+
+        System.out.println("//-------------------------");
+        Factory factory = context.getBean("factory", Factory.class);
+        factory.doWork();
     }
 }
