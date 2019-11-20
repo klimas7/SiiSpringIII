@@ -11,9 +11,10 @@ import lombok.Setter;
 @NoArgsConstructor
 public class HelloWorld {
     private String message;
+    private String message2;
 
     void print() {
-        System.out.println("Your message: " + message);
+        System.out.println("Your messages: " + message + " : " + message2);
     }
 }
 

@@ -17,6 +17,7 @@
 
     <!-- Set value as constructor -->
     <bean id="helloWordConstructor" class="pl.sii.spring.core.xml.HelloWorld">
-        <constructor-arg value="Hello Sii People !! from constructor"/>
+        <constructor-arg value="Hello Sii People !! from constructor" index="1"/>
+        <constructor-arg value="Hello Sii People !! from constructor2" index="0"/>
     </bean>
 </beans>
