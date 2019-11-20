@@ -22,7 +22,7 @@
     </bean>
 
     <bean id="lazyWorker" class="pl.sii.spring.core.xml.LazyWorker" scope="prototype" />
-    <bean id="hardWorker" class="pl.sii.spring.core.xml.HardWorker" scope="singleton" /> <!-- scope="singleton" -->
+    <bean id="hardWorker" class="pl.sii.spring.core.xml.HardWorker"/> <!-- scope="singleton" -->
     <bean id="bestWorker" class="pl.sii.spring.core.xml.HardWorker"/>
 
     <bean id="factory" class="pl.sii.spring.core.xml.Factory">
