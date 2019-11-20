@@ -1,7 +1,8 @@
 package pl.sii.spring.core.annotation;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
-import pl.sii.spring.core.xml.Worker;
 
 import javax.annotation.Resource;
 import java.util.Collection;
@@ -10,7 +11,11 @@ import java.util.Optional;
 
 @Component
 public class Factory {
+    @Autowired
     private Worker bestWorker;
+
+    @Autowired
+    @Qualifier(value = "lazyWorker")
     private Worker theMostLazyWorker;
 
     @Resource

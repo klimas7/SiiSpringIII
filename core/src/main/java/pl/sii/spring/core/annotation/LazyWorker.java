@@ -2,7 +2,6 @@ package pl.sii.spring.core.annotation;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import pl.sii.spring.core.xml.Worker;
 
 import java.util.UUID;
 
