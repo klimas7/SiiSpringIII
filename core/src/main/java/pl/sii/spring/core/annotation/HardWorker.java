@@ -3,6 +3,7 @@ package pl.sii.spring.core.annotation;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.UUID;
 
 @Component
@@ -17,5 +18,10 @@ public class HardWorker implements Worker {
     @Override
     public void doWork() {
         System.out.println("I'am hard worker nr: " + uuid);
+    }
+
+    @PostConstruct
+    private void born() {
+        System.out.println("Born a hard worker nr: " + uuid);
     }
 }
