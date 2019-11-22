@@ -13,12 +13,11 @@ public class BeanA {
         this.beanB = beanB;
     }
 
-    @PostConstruct
-    public void print() {
-        this.beanB.printMessage();
+    public String getOtherMessage() {
+        return beanB.getMessage();
     }
 
-    public void printMessage() {
-        System.out.println(message);
+    public String getMessage() {
+        return message;
     }
 }
