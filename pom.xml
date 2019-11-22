@@ -19,6 +19,7 @@
         <spring.version>5.2.1.RELEASE</spring.version>
         <lombok.version>1.18.10</lombok.version>
         <sprint.boot.version>2.2.1.RELEASE</sprint.boot.version>
+        <junit.version>5.5.2</junit.version>
     </properties>
 
     <dependencyManagement>
@@ -38,6 +39,20 @@
                 <artifactId>spring-boot-starter</artifactId>
                 <version>${sprint.boot.version}</version>
             </dependency>
+            <!-- test -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
