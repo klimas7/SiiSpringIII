@@ -17,6 +17,20 @@ public class RatingRetriever {
     //DefaultListableBeanFactory.getBeanNamesForType --> this.allBeanNamesByType Tutaj jest zgodnie z alfabetem
     //ClassPathBeanDefinitionScanner -> doScan
 
+    //If add Order
+    /*
+    DefaultListableBeanFactory.resolveMultipleBeans
+    1371
+    if (result instanceof List) {
+				Comparator<Object> comparator = adaptDependencyComparator(matchingBeans);
+				if (comparator != null) {
+					((List<?>) result).sort(comparator);
+				}
+			}
+	OrderComparator
+	AnnotationAwareOrderComparator
+     */
+
 
     @PostConstruct
     public void printRating() {
