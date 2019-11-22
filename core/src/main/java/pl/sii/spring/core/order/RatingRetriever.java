@@ -12,6 +12,6 @@ public class RatingRetriever {
 
     @PostConstruct
     public void printRating() {
-        System.out.println(rating);
+        System.out.println("Rating " + rating.getRating());
     }
 }
