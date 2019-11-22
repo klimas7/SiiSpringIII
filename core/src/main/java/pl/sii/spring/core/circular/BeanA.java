@@ -2,6 +2,8 @@ package pl.sii.spring.core.circular;
 
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+
 @Component
 public class BeanA {
     private String message = "BeanA";
@@ -9,8 +11,13 @@ public class BeanA {
 
     public BeanA(BeanB beanB) {
         this.beanB = beanB;
+    }
+
+    @PostConstruct
+    public void print() {
         this.beanB.printMessage();
     }
+
     public void printMessage() {
         System.out.println(message);
     }
