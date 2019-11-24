@@ -62,6 +62,8 @@ public class PropertiesComponent {
     @Value("#{propertyGenerator.generate('${sii.spring.p6}')}")
     private Map<String, String> p6;
 
+    @Value("#{${sii.spring.p6a}}")
+    private Map<String, String> p6a;
 
     @PostConstruct
     public void printProperties() {
@@ -80,5 +82,6 @@ public class PropertiesComponent {
         logger.info("active profile: " + Arrays.asList(env.getActiveProfiles()));
         logger.info("default profile: " + Arrays.asList(env.getDefaultProfiles()));
         logger.info("sii.spring.p6: " + p6);
+        logger.info("sii.spring.p6: " + p6a);
     }
 }
