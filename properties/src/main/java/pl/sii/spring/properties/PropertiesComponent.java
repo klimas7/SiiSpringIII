@@ -2,14 +2,15 @@ package pl.sii.spring.properties;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.convert.Delimiter;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Logger;
 
 @Component
+@PropertySource("classpath:sii.properties")
 public class PropertiesComponent {
     Logger logger = Logger.getLogger(this.getClass().getName());
 
@@ -31,6 +32,9 @@ public class PropertiesComponent {
     @Value("#{'${sii.spring.p3b}'.split(';')}")
     private List<String> p3b;
 
+    @Value("${sii.spring.p4}")
+    private String p4;
+
     @PostConstruct
     public void printProperties() {
         logger.info("Print properties");
@@ -39,5 +43,6 @@ public class PropertiesComponent {
         logger.info("sii.spring.p3: " + p3);
         logger.info("sii.spring.p3a: " + p3a);
         logger.info("sii.spring.p3b: " + p3b);
+        logger.info("sii.spring.p4: " + p4);
     }
 }
