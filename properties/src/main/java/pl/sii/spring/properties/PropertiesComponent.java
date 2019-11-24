@@ -1,12 +1,15 @@
 package pl.sii.spring.properties;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.convert.Delimiter;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -17,6 +20,8 @@ import java.util.logging.Logger;
 })
 public class PropertiesComponent {
     Logger logger = Logger.getLogger(this.getClass().getName());
+    @Autowired
+    private Environment env;
 
     @Value("${sii.spring.p1}")
     private String p1;
@@ -66,5 +71,8 @@ public class PropertiesComponent {
         logger.info("sii.spring.p5: " + p5);
         logger.info("userName: " + userName);
         logger.info("propertyFromClass " + propertyFromClass);
+        logger.info("userHome: " + env.getProperty("user.home"));
+        logger.info("active profile: " + Arrays.asList(env.getActiveProfiles()));
+        logger.info("default profile: " + Arrays.asList(env.getDefaultProfiles()));
     }
 }
