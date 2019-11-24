@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 @Component
@@ -58,6 +59,10 @@ public class PropertiesComponent {
     private String propertyFromClass;
     //StandardBeanExpressionResolver -> SpelExpression -> ... -> Indexer -> ReflectivePropertyAccessor
 
+    @Value("#{propertyGenerator.generate('${sii.spring.p6}')}")
+    private Map<String, String> p6;
+
+
     @PostConstruct
     public void printProperties() {
         logger.info("Print properties");
@@ -74,5 +79,6 @@ public class PropertiesComponent {
         logger.info("userHome: " + env.getProperty("user.home"));
         logger.info("active profile: " + Arrays.asList(env.getActiveProfiles()));
         logger.info("default profile: " + Arrays.asList(env.getDefaultProfiles()));
+        logger.info("sii.spring.p6: " + p6);
     }
 }
