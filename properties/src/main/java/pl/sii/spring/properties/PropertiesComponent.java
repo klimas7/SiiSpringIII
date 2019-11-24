@@ -65,6 +65,9 @@ public class PropertiesComponent {
     @Value("#{${sii.spring.p6a}}")
     private Map<String, String> p6a;
 
+    @Autowired
+    private SiiSpringProperty siiSpringProperty;
+
     @PostConstruct
     public void printProperties() {
         logger.info("Print properties");
@@ -83,5 +86,15 @@ public class PropertiesComponent {
         logger.info("default profile: " + Arrays.asList(env.getDefaultProfiles()));
         logger.info("sii.spring.p6: " + p6);
         logger.info("sii.spring.p6: " + p6a);
+
+        logger.info("siiSpringProperty.p1: " + siiSpringProperty.getP1());
+        logger.info("siiSpringProperty.p2: " + siiSpringProperty.getP2());
+        logger.info("siiSpringProperty.p3: " + Arrays.asList(siiSpringProperty.getP3()));
+        logger.info("siiSpringProperty.p3a: " + siiSpringProperty.getP3a());
+        logger.info("siiSpringProperty.p4: " + siiSpringProperty.getP4());
+        logger.info("siiSpringProperty.p4a: " + siiSpringProperty.getP4a());
+        logger.info("siiSpringProperty.p5: " + siiSpringProperty.getP5());
+        logger.info("siiSpringProperty.p6: " + siiSpringProperty.getP6());
+        logger.info("siiSpringProperty.p6a: " + siiSpringProperty.getP6b());
     }
 }
