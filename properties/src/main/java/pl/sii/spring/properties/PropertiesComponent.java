@@ -48,6 +48,10 @@ public class PropertiesComponent {
     @Value("#{systemProperties['user.name']}")
     private String userName;
 
+    @Value("#{testProperty['property']}")
+    private String propertyFromClass;
+    //StandardBeanExpressionResolver -> SpelExpression -> ... -> Indexer -> ReflectivePropertyAccessor
+
     @PostConstruct
     public void printProperties() {
         logger.info("Print properties");
@@ -60,5 +64,6 @@ public class PropertiesComponent {
         logger.info("sii.spring.p4a: " + p4a);
         logger.info("sii.spring.p5: " + p5);
         logger.info("userName: " + userName);
+        logger.info("propertyFromClass " + propertyFromClass);
     }
 }
