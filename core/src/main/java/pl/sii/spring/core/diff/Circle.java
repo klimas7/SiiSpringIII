@@ -10,4 +10,9 @@ public class Circle implements Shape {
     public int area() {
         return (int) (Math.PI * r * r);
     }
+
+    @Override
+    public String description() {
+        return Circle.class.getName() + " area: " + area();
+    }
 }

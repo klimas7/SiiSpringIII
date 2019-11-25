@@ -22,6 +22,7 @@
         <lombok.version>1.18.10</lombok.version>
         <spring.boot.version>2.2.1.RELEASE</spring.boot.version>
         <junit.version>5.5.2</junit.version>
+        <javax.inject.version>1</javax.inject.version>
     </properties>
 
     <dependencyManagement>
@@ -60,7 +61,12 @@
                 <version>${junit.version}</version>
                 <scope>test</scope>
             </dependency>
-
+            <dependency>
+                <groupId>javax.inject</groupId>
+                <artifactId>javax.inject</artifactId>
+                <version>${javax.inject.version}</version>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

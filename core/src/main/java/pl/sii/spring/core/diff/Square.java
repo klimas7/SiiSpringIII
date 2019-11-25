@@ -9,4 +9,9 @@ public class Square implements Shape {
     public int area() {
         return a * a;
     }
+
+    @Override
+    public String description() {
+        return Square.class.getName() + " area: " + area();
+    }
 }
