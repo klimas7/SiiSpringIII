@@ -12,12 +12,17 @@ import javax.inject.Inject;
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {TestConfig.class})
 public class DiffInjectTest {
+    /*
+     * - Type
+     * - Qualifier
+     * - name
+     */
     @Inject
     @Qualifier("triangle")
-    private Shape shape;
+    private Shape square;
 
     @Test
     public void startContextTest() {
-        System.out.println(shape.description());
+        System.out.println(square.description());
     }
 }

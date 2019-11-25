@@ -11,12 +11,17 @@ import javax.annotation.Resource;
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {TestConfig.class})
 public class DiffResourceTest {
+    /**
+     * - name
+     * - Type
+     * - Qualifier
+     */
     @Resource
     @Qualifier("triangle")
-    private Shape shape;
+    private Shape square;
 
     @Test
     public void startContextTest() {
-        System.out.println(shape.description());
+        System.out.println(square.description());
     }
 }
