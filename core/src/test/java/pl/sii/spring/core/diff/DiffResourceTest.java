@@ -2,6 +2,7 @@ package pl.sii.spring.core.diff;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
@@ -11,10 +12,11 @@ import javax.annotation.Resource;
 @ContextConfiguration(classes = {TestConfig.class})
 public class DiffResourceTest {
     @Resource
-    private Shape square;
+    @Qualifier("triangle")
+    private Shape shape;
 
     @Test
     public void startContextTest() {
-        System.out.println(square.description());
+        System.out.println(shape.description());
     }
 }
