@@ -11,10 +11,10 @@ import javax.annotation.Resource;
 @ContextConfiguration(classes = {TestConfig.class})
 public class DiffResourceTest {
     @Resource
-    private Circle shape;
+    private Shape square;
 
     @Test
     public void startContextTest() {
-        System.out.println(shape.description());
+        System.out.println(square.description());
     }
 }

@@ -12,10 +12,10 @@ import javax.inject.Inject;
 @ContextConfiguration(classes = {TestConfig.class})
 public class DiffAutowiredTest {
     @Autowired
-    private Circle shape;
+    private Shape square;
 
     @Test
     public void startContextTest() {
-        System.out.println(shape.description());
+        System.out.println(square.description());
     }
 }
