@@ -3,31 +3,34 @@ package pl.sii.spring.aop;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.aspectj.lang.annotation.*;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-@Order(0)
-public class XCustomer {
-    public static final Log log = LogFactory.getLog(XCustomer.class);
+public class SmartCustomer {
+    public static final Log log = LogFactory.getLog(SmartCustomer.class);
 
-    @Before("execution(* pl.sii.spring.aop.Shop.buy(..))")
+    @Pointcut("execution(* pl.sii.spring.aop.Shop.buy(..))")
+    public void buy() {
+
+    }
+
+    @Before("buy()")
     public void chose() {
         log.info("chose()");
     }
 
-    @After("execution(* pl.sii.spring.aop.Shop.buy())")
+    @After("buy()")
     public void checkPrice() {
         log.info("checkPrice()");
     }
 
-    @AfterReturning("execution(* pl.sii.spring.aop.Shop.buy())")
+    @AfterReturning("buy()")
     public void transport() {
         log.info("transport()");
     }
 
-    @AfterThrowing("execution(* pl.sii.spring.aop.Shop.buy(..))")
+    @AfterThrowing("buy()")
     public void somethingWrong() {
         log.info("somethingWrong()");
     }
