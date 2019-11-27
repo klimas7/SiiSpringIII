@@ -13,20 +13,29 @@ import java.util.Map;
 @Configuration
 public class JmxConfiguration {
 
-    @Bean
-    public RmiRegistryFactoryBean rmiRegistryFactoryBean() {
-        RmiRegistryFactoryBean rrfb = new RmiRegistryFactoryBean();
-        rrfb.setPort(9001);
-        return rrfb;
-    }
+    /*
+    Or In VM options:
+    -Dcom.sun.management.jmxremote
+    -Dcom.sun.management.jmxremote.port=9001
+    -Dcom.sun.management.jmxremote.host=localhost
+    -Dcom.sun.management.jmxremote.ssl=false
+    -Dcom.sun.management.jmxremote.authenticate=false
 
-    @Bean
-    public ConnectorServerFactoryBean connectorServerFactoryBean() throws MalformedObjectNameException {
-        ConnectorServerFactoryBean csfb = new ConnectorServerFactoryBean();
-        csfb.setObjectName("connector:name=rmi");
-        csfb.setServiceUrl("service:jmx:rmi://localhost/jndi/rmi://localhost:9001/jmxApplication");
-        return csfb;
-    }
+     */
+//    @Bean
+//    public RmiRegistryFactoryBean rmiRegistryFactoryBean() {
+//        RmiRegistryFactoryBean rrfb = new RmiRegistryFactoryBean();
+//        rrfb.setPort(9001);
+//        return rrfb;
+//    }
+
+//    @Bean
+//    public ConnectorServerFactoryBean connectorServerFactoryBean() throws MalformedObjectNameException {
+//        ConnectorServerFactoryBean csfb = new ConnectorServerFactoryBean();
+//        csfb.setObjectName("connector:name=rmi");
+//        csfb.setServiceUrl("service:jmx:rmi://localhost/jndi/rmi://localhost:9001/jmxApplication");
+//        return csfb;
+//    }
 
     @Bean
     public MBeanExporter mBeanExporter(MessageManageOperation messageManageOperation) {
