@@ -16,3 +16,9 @@ logging:
     pl:
       sii:
         spring: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
