@@ -40,6 +40,9 @@ public class ApiController {
         return requestScopeMessage.getMessage();
     }
 
-
+    @GetMapping("/object")
+    public ResponseEntity<Test> getTest() {
+        return new ResponseEntity<>(new Test(), HttpStatus.OK);
+    }
 
 }
