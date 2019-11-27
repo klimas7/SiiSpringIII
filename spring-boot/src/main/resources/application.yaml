@@ -22,3 +22,9 @@ management:
     web:
       exposure:
         include: "*"
+
+info:
+  app:
+    name: "Sii Spring Boot Application"
+    description: "This is my first spring boot application"
+    version: "1.0.0"
