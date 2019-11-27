@@ -9,14 +9,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class MessageRestController {
     private MessageManageOperation messageManageOperation;
     private SmartMessage smartMessage;
+    private MessageNotifier messageNotifier;
 
-    public MessageRestController(MessageManageOperation messageManageOperation, SmartMessage smartMessage) {
+    public MessageRestController(MessageManageOperation messageManageOperation, SmartMessage smartMessage, MessageNotifier messageNotifier) {
         this.messageManageOperation = messageManageOperation;
         this.smartMessage = smartMessage;
+        this.messageNotifier = messageNotifier;
     }
 
     @GetMapping("/message")
     public String message() {
+        messageNotifier.sendNotification();
         return messageManageOperation.getMessage();
     }
 
