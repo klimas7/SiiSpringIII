@@ -11,6 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class ApiController {
 
+    private SessionScopeMessage sessionScopeMessage;
+    private RequestScopeMessage requestScopeMessage;
+
+    public ApiController(SessionScopeMessage sessionScopeMessage, RequestScopeMessage requestScopeMessage) {
+        this.sessionScopeMessage = sessionScopeMessage;
+        this.requestScopeMessage = requestScopeMessage;
+    }
+
     @GetMapping("/helloSii")
     public String helloSii() {
         return "Hello Sii";
@@ -21,4 +29,17 @@ public class ApiController {
     public ResponseEntity<String> hello(@RequestParam String name) {
         return new ResponseEntity<>("Hello " + name, HttpStatus.OK);
     }
+
+    @GetMapping("/session")
+    public String session() {
+        return sessionScopeMessage.getMessage();
+    }
+
+    @GetMapping("/request")
+    public String request() {
+        return requestScopeMessage.getMessage();
+    }
+
+
+
 }
