@@ -16,6 +16,7 @@
         <module>properties</module>
         <module>aop</module>
         <module>jmx</module>
+        <module>events</module>
     </modules>
 
     <properties>
