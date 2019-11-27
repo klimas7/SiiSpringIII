@@ -8,9 +8,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class MessageEventListener implements ApplicationListener<MessageEvent> {
     private static final Log log = LogFactory.getLog(MessageEventListener.class);
+
     @Override
     public void onApplicationEvent(MessageEvent event) {
         log.info("Listen a message: " + event.getMessage() + " from source: " + event.getSource());
-
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            log.error(e);
+        }
+        log.info("After sleep in Listener");
     }
 }
