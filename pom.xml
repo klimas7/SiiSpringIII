@@ -17,6 +17,7 @@
         <module>aop</module>
         <module>jmx</module>
         <module>events</module>
+        <module>spring-boot</module>
     </modules>
 
     <properties>
