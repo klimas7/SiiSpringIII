@@ -3,7 +3,9 @@ package pl.sii.spring.jmx;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jmx.export.MBeanExporter;
+import org.springframework.jmx.export.assembler.InterfaceBasedMBeanInfoAssembler;
 import org.springframework.jmx.export.assembler.MBeanInfoAssembler;
+import org.springframework.jmx.export.assembler.MethodExclusionMBeanInfoAssembler;
 import org.springframework.jmx.export.assembler.MethodNameBasedMBeanInfoAssembler;
 import org.springframework.jmx.support.ConnectorServerFactoryBean;
 import org.springframework.remoting.rmi.RmiRegistryFactoryBean;
@@ -41,12 +43,16 @@ public class JmxConfiguration {
 
     @Bean
     public MBeanExporter mBeanExporter(MessageManageOperation messageManageOperation,
-                                       MethodNameBasedMBeanInfoAssembler assembler) {
+                                       MethodNameBasedMBeanInfoAssembler assembler,
+                                       MethodExclusionMBeanInfoAssembler exclusionAssembler,
+                                       InterfaceBasedMBeanInfoAssembler interfaceAssembler) {
         MBeanExporter mBeanExporter = new MBeanExporter();
         Map<String, Object> beans = new HashMap<>();
         beans.put("jmxApplication:name=MessageManageOperation", messageManageOperation);
         mBeanExporter.setBeans(beans);
-        mBeanExporter.setAssembler(assembler);
+//        mBeanExporter.setAssembler(assembler);
+//        mBeanExporter.setAssembler(exclusionAssembler);
+        mBeanExporter.setAssembler(interfaceAssembler);
         return mBeanExporter;
     }
 
@@ -55,5 +61,19 @@ public class JmxConfiguration {
         MethodNameBasedMBeanInfoAssembler methodNameBasedMBeanInfoAssembler = new MethodNameBasedMBeanInfoAssembler();
         methodNameBasedMBeanInfoAssembler.setManagedMethods("getMessage", "setMessage");
         return methodNameBasedMBeanInfoAssembler;
+    }
+
+    @Bean
+    public MethodExclusionMBeanInfoAssembler exclusionAssembler() {
+        MethodExclusionMBeanInfoAssembler methodExclusionMBeanInfoAssembler = new MethodExclusionMBeanInfoAssembler();
+        methodExclusionMBeanInfoAssembler.setIgnoredMethods("setPrivateMessage");
+        return methodExclusionMBeanInfoAssembler;
+    }
+
+    @Bean
+    public InterfaceBasedMBeanInfoAssembler interfaceAssembler() {
+        InterfaceBasedMBeanInfoAssembler interfaceBasedMBeanInfoAssembler = new InterfaceBasedMBeanInfoAssembler();
+        interfaceBasedMBeanInfoAssembler.setManagedInterfaces(MessageManageOperation.class);
+        return interfaceBasedMBeanInfoAssembler;
     }
 }
