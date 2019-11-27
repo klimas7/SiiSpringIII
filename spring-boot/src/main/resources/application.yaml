@@ -13,3 +13,6 @@ logging:
     org:
       springframework:
         web: debug
+    pl:
+      sii:
+        spring: DEBUG

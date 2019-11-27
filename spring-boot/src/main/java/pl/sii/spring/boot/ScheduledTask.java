@@ -16,6 +16,7 @@ public class ScheduledTask {
     @Scheduled(fixedRateString = "${scheduled.time}")
     public void reportCurrentTime() {
         log.info("The time is now: " + DATE_FORMAT.format(new Date()));
+        log.debug("The time is now: " + DATE_FORMAT.format(new Date()));
     }
 
     @Scheduled(cron = "${scheduled.cron}")
