@@ -13,8 +13,13 @@ public class ScheduledTask {
     private static Log log = LogFactory.getLog(ScheduledTask.class);
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("HH:mm:ss");
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRateString = "${scheduled.time}")
     public void reportCurrentTime() {
         log.info("The time is now: " + DATE_FORMAT.format(new Date()));
+    }
+
+    @Scheduled(cron = "${scheduled.cron}")
+    public void crone() {
+        log.info("Cron: The time is now: " + DATE_FORMAT.format(new Date()));
     }
 }
