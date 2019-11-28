@@ -1,0 +1,8 @@
+package pl.sii.spring.jms;
+
+public interface MessageService {
+    void sendMessage(String message);
+    String getMessage();
+    void sendMessageInfo(MessageInfo messageInfo);
+    MessageInfo getMessageInfo();
+}
