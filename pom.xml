@@ -18,6 +18,7 @@
         <module>jmx</module>
         <module>events</module>
         <module>spring-boot</module>
+        <module>jms</module>
     </modules>
 
     <properties>
