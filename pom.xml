@@ -31,6 +31,7 @@
         <aspectj.version>1.9.4</aspectj.version>
         <swagger.version>2.9.2</swagger.version>
         <spring.boot.admin.version>2.1.6</spring.boot.admin.version>
+        <activemq.version>5.15.11</activemq.version>
     </properties>
 
     <dependencyManagement>
@@ -79,6 +80,17 @@
                 <groupId>de.codecentric</groupId>
                 <artifactId>spring-boot-admin-starter-client</artifactId>
                 <version>${spring.boot.admin.version}</version>
+            </dependency>
+            <!-- jms -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-activemq</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-broker</artifactId>
+                <version>${activemq.version}</version>
             </dependency>
             <!-- test -->
             <dependency>
