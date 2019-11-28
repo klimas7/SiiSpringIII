@@ -1,5 +1,6 @@
 package pl.sii.spring.jms;
 
+import org.apache.activemq.command.ActiveMQTopic;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.jms.core.JmsOperations;
@@ -50,5 +51,10 @@ public class MessageServiceImpl implements MessageService {
     public MessageInfo getMessageInfo() {
 //        return (MessageInfo) jmsOperations.receiveAndConvert("message.queue.object");
         return (MessageInfo) jmsOperations.receiveAndConvert(MESSAGE_QUEUE_OBJECT);
+    }
+
+    @Override
+    public void sendTopic(String topic) {
+        jmsOperations.convertAndSend(new ActiveMQTopic("sii.topic"), topic);
     }
 }

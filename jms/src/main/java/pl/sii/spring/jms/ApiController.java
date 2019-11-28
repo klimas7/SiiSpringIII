@@ -39,6 +39,12 @@ public class ApiController {
         return messageService.getMessageInfo();
     }
 
+    @PostMapping("/topic")
+    public void sendTopic(@RequestParam("topic") String topic) {
+        log.info("Send topic info: " + topic);
+        messageService.sendTopic(topic);
+    }
+
 }
 /*
 GET http://localhost:8080/api/text
