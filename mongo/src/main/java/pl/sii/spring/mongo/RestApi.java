@@ -37,5 +37,8 @@ public class RestApi {
         return userRepository.findByFirstName(firstName);
     }
 
-
+    @GetMapping("/oldestUser")
+    public User getOldestUser() {
+        return userRepository.getOldestUser();
+    }
 }
