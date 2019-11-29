@@ -93,6 +93,12 @@
                 <artifactId>activemq-broker</artifactId>
                 <version>${activemq.version}</version>
             </dependency>
+            <!-- mongo -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-mongodb</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
             <!-- test -->
             <dependency>
                 <groupId>org.springframework</groupId>

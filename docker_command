@@ -4,3 +4,17 @@ docker run -p 61616:61616 -p 8161:8161 rmohr/activemq
 
 //web: ip_vm:8161
 //admin:admin
+
+
+#mongo
+docker pull mongo
+docker run --name sii-mongo -p 0.0.0.0:27017:27017 -p 0.0.0.0:28017:28017 -d mongo:latest
+docker logs sii-mongo
+
+NETWORK  [initandlisten] waiting for connections on port 27017
+
+docker exec -it sii-mongo bash
+# mongo
+> shows dbs
+> use test
+> db.user.find()
