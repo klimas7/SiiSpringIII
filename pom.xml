@@ -19,6 +19,7 @@
         <module>events</module>
         <module>spring-boot</module>
         <module>jms</module>
+        <module>mongo</module>
     </modules>
 
     <properties>
