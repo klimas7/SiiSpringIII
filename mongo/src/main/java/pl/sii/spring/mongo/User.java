@@ -61,4 +61,15 @@ public class User {
     public void setBirthDate(LocalDateTime birthDate) {
         this.birthDate = birthDate;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", age=" + age +
+                ", birthDate=" + birthDate +
+                '}';
+    }
 }

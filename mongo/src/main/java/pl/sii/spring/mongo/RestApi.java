@@ -1,5 +1,7 @@
 package pl.sii.spring.mongo;
 
+import org.apache.juli.logging.Log;
+import org.apache.juli.logging.LogFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -10,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class RestApi {
+    private static final Log log = LogFactory.getLog(RestApi.class);
     private UserRepository userRepository;
 
     public RestApi(UserRepository userRepository) {
@@ -42,9 +45,24 @@ public class RestApi {
         return userRepository.getOldestUser();
     }
 
-    @RequestMapping("/userAgeCounts")
+    @GetMapping("/userAgeCounts")
     public List<AgeCounts> getUserAgeCounts() {
         return userRepository.getUserAgeCounts();
     }
 
+    @GetMapping("/cacheTest")
+    public void cacheTest() {
+        log.info("Cache Test");
+        log.info("1: " + userRepository.findByFirstNameSlow("John"));
+        log.info("2: " + userRepository.findByFirstNameSlow("Neo"));
+        log.info("3: " + userRepository.findByFirstNameSlow("Myszka"));
+
+        log.info("1a: " + userRepository.findByFirstNameSlow("John"));
+        log.info("2a: " + userRepository.findByFirstNameSlow("Neo"));
+        log.info("3a: " + userRepository.findByFirstNameSlow("Myszka"));
+
+        log.info("1b: " + userRepository.findByFirstNameSlow("John"));
+        log.info("2b: " + userRepository.findByFirstNameSlow("Neo"));
+        log.info("3b: " + userRepository.findByFirstNameSlow("Myszka"));
+    }
 }
