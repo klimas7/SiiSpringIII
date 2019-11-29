@@ -1,9 +1,6 @@
 package pl.sii.spring.mongo;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -34,5 +31,11 @@ public class RestApi {
     public List<User> getUsers() {
         return userRepository.findAll();
     }
+
+    @GetMapping("/user/{firstName}")
+    public List<User> getUserByName(@PathVariable String firstName) {
+        return userRepository.findByFirstName(firstName);
+    }
+
 
 }

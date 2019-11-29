@@ -23,4 +23,8 @@ public class UserRepository {
 //        return userMongoRepository.findAll();
         return mongo.findAll(User.class);
     }
+
+    public List<User> findByFirstName(String firstName) {
+        return userMongoRepository.findUserByFirstName(firstName);
+    }
 }
