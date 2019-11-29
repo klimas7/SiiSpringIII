@@ -1,5 +1,6 @@
 package pl.sii.spring.mongo;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,4 +29,10 @@ public class RestApi {
         users.add(new User("Dziadek", "Mroz", 142, LocalDateTime.of(1860, Month.JANUARY, 12, 0 ,0 )));
         userRepository.save(users);
     }
+
+    @GetMapping("/users")
+    public List<User> getUsers() {
+        return userRepository.findAll();
+    }
+
 }
