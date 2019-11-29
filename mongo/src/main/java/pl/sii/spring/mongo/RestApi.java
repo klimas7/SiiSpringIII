@@ -41,4 +41,10 @@ public class RestApi {
     public User getOldestUser() {
         return userRepository.getOldestUser();
     }
+
+    @RequestMapping("/userAgeCounts")
+    public List<AgeCounts> getUserAgeCounts() {
+        return userRepository.getUserAgeCounts();
+    }
+
 }

@@ -2,6 +2,8 @@ package pl.sii.spring.mongo;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
@@ -38,5 +40,15 @@ public class UserRepository {
 //
 //        return mongo.findOne(query, User.class);
         return userMongoRepository.findTopByAgeIsAfterOrderByAgeDesc(0);
+    }
+
+    //db.user.aggregate([{ "$group" : {_id: "$age", count:{$sum:1}} }])
+    public List<AgeCounts> getUserAgeCounts() {
+        Aggregation agg = Aggregation.newAggregation(Aggregation.group("age").count().as("count"),
+                Aggregation.project("count").and("age").previousOperation(),
+                Aggregation.sort(Sort.Direction.DESC, "age"));
+
+        AggregationResults<AgeCounts> aggregate = mongo.aggregate(agg, User.class, AgeCounts.class);
+        return aggregate.getMappedResults();
     }
 }
