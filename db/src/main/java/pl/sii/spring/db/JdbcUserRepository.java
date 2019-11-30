@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 import pl.sii.spring.db.model.User;
 
+import javax.transaction.Transactional;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,9 +37,15 @@ public class JdbcUserRepository implements UserRepository {
     }
 
     @Override
+    @Transactional
     public User save(User user) {
         long id = insertUserAndReturnId(user);
         User newUser = new User(id, user.getFirstName(), user.getLastName(), user.getUserAge(), user.getBirthDate());
+        System.out.println("-----");
+        if (false)
+        {
+            throw new RuntimeException("ups!!");
+        }
         return newUser;
     }
 
