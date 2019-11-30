@@ -3,24 +3,24 @@ package pl.sii.spring.db.model;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity
+//@Entity
 public class User {
     public User() {
     }
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "firstName")
+//    @Column(name = "firstName")
     private String firstName;
 
-    @Column(name = "lastName")
+//    @Column(name = "lastName")
     private String lastName;
 
-    @Column(name = "age")
+//    @Column(name = "age")
     private Integer userAge;
 
-    @Column(name = "birthDate")
+//    @Column(name = "birthDate")
     private LocalDateTime birthDate;
 
     public User(Long id, String firstName, String lastName, Integer userAge, LocalDateTime birthDate) {
