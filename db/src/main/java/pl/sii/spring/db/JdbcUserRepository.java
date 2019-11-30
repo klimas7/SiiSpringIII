@@ -50,7 +50,7 @@ public class JdbcUserRepository implements UserRepository {
     @Transactional
     public User save(User user) {
         long id = insertUserAndReturnId(user);
-        User newUser = new User(id, user.getFirstName(), user.getLastName(), user.getUserAge(), user.getBirthDate());
+        User newUser = new User(id, user.getFirstName(), user.getLastName(), user.getAge(), user.getBirthDate());
         System.out.println("-----");
         if (false)
         {
@@ -70,7 +70,7 @@ public class JdbcUserRepository implements UserRepository {
         Map<String, Object> args= new HashMap();
         args.put("firstName", user.getFirstName());
         args.put("lastName", user.getLastName());
-        args.put("age", user.getUserAge());
+        args.put("age", user.getAge());
         args.put("birthDate", user.getBirthDate());
         return insert.executeAndReturnKey(args).longValue();
     }

@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/api")
 public class RestApi {
     @Autowired
-    @Qualifier("jdbc")
+    @Qualifier("hibernate")
     private UserRepository userRepository;
 
     @GetMapping("/count")
