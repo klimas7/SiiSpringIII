@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import pl.sii.spring.db.model.User;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.List;
 
@@ -23,12 +26,20 @@ public class HibernateUserRepository implements UserRepository {
 
     @Override
     public List<User> findRecent() {
-        return null;
+        return findRecent(3);
     }
 
     @Override
     public List<User> findRecent(int count) {
-        return null;
+        Session session = getCurrentSession();
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+
+        CriteriaQuery<User> query = cb.createQuery(User.class);
+        Root<User> root = query.from(User.class);
+        query.orderBy(cb.desc(root.get("age")));
+        return session.createQuery(query)
+                .setMaxResults(count)
+                .getResultList();
     }
 
     @Override
@@ -44,6 +55,7 @@ public class HibernateUserRepository implements UserRepository {
     }
 
     @Override
+    @Transactional
     public void delete(long id) {
         getCurrentSession().delete(findOne(id));
     }
