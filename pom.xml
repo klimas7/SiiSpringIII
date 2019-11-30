@@ -34,6 +34,7 @@
         <swagger.version>2.9.2</swagger.version>
         <spring.boot.admin.version>2.1.6</spring.boot.admin.version>
         <activemq.version>5.15.11</activemq.version>
+        <h2.version>1.4.200</h2.version>
     </properties>
 
     <dependencyManagement>
@@ -110,6 +111,24 @@
                 <artifactId>spring-boot-starter-cache</artifactId>
                 <version>${spring.boot.version}</version>
             </dependency>
+
+            <!-- db -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>${h2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-jpa</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+
             <!-- test -->
             <dependency>
                 <groupId>org.springframework</groupId>
