@@ -35,6 +35,7 @@
         <spring.boot.admin.version>2.1.6</spring.boot.admin.version>
         <activemq.version>5.15.11</activemq.version>
         <h2.version>1.4.200</h2.version>
+        <dbcp.version>2.6.0</dbcp.version>
     </properties>
 
     <dependencyManagement>
@@ -127,6 +128,11 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-jpa</artifactId>
                 <version>${spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-dbcp2</artifactId>
+                <version>${dbcp.version}</version>
             </dependency>
 
             <!-- test -->

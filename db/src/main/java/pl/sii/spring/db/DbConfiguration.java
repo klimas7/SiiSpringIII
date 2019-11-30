@@ -1,5 +1,6 @@
 package pl.sii.spring.db;
 
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
@@ -27,6 +28,20 @@ public class DbConfiguration {
     }
 
     @Bean
+    @Profile("test")
+    @Lazy
+    public DataSource dataSourceTest() {
+        BasicDataSource ds = new BasicDataSource();
+        ds.setDriverClassName("org.h2.Driver");
+        ds.setUrl("jdbc:h2:tcp://192.168.0.145:1521/test");
+        ds.setUsername("sa");
+        ds.setPassword("");
+        ds.setInitialSize(2);
+        ds.setMaxTotal(10);
+        return ds;
+    }
+
+    @Bean
     @Lazy
     public LocalSessionFactoryBean sessionFactory(DataSource ds) {
         LocalSessionFactoryBean lsf = new LocalSessionFactoryBean();
@@ -34,6 +49,7 @@ public class DbConfiguration {
         lsf.setPackagesToScan("pl.sii.spring.db.model");
         Properties properties = new Properties();
         properties.setProperty("dialect", "org.hibernate.dialect.H2Dialect");
+        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
         lsf.setHibernateProperties(properties);
         return lsf;
     }
