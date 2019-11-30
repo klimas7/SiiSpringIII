@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.jndi.JndiObjectFactoryBean;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 import javax.sql.DataSource;
@@ -35,5 +36,16 @@ public class DbConfiguration {
         properties.setProperty("dialect", "org.hibernate.dialect.H2Dialect");
         lsf.setHibernateProperties(properties);
         return lsf;
+    }
+
+    @Bean
+    @Profile("prod")
+    @Lazy
+    public DataSource dataSource() {
+        JndiObjectFactoryBean jndiObjectFactoryBean = new JndiObjectFactoryBean();
+        jndiObjectFactoryBean.setJndiName("jdbc/SiiSpringDS");
+        jndiObjectFactoryBean.setResourceRef(true);
+        jndiObjectFactoryBean.setProxyInterface(DataSource.class);
+        return (DataSource) jndiObjectFactoryBean.getObject();
     }
 }
