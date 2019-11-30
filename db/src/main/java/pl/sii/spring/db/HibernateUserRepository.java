@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import pl.sii.spring.db.model.User;
 
 import javax.persistence.criteria.CriteriaQuery;
+import java.io.Serializable;
 import java.util.List;
 
 @Repository("hibernate")
@@ -32,17 +33,19 @@ public class HibernateUserRepository implements UserRepository {
 
     @Override
     public User findOne(long id) {
-        return null;
+        return getCurrentSession().get(User.class, id);
     }
 
     @Override
     public User save(User user) {
-        return null;
+        Serializable id = getCurrentSession().save(user);
+        User newUser = new User((Long) id, user.getFirstName(), user.getFirstName(), user.getAge(), user.getBirthDate());
+        return newUser;
     }
 
     @Override
     public void delete(long id) {
-
+        getCurrentSession().delete(findOne(id));
     }
 
     private List<User> findAll() {
