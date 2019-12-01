@@ -34,7 +34,7 @@ public class UserRepository {
         return userMongoRepository.findUserByFirstName(firstName);
     }
 
-    //db.user.find().sort({userAge: -1}).limit(1)
+    //db.user.find().sort({age: -1}).limit(1)
     public User getOldestUser() {
 //        Query query = new Query();
 //        query.with(Sort.by(Sort.Direction.DESC, "age"));

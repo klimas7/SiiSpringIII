@@ -19,17 +19,9 @@ import static org.springframework.util.StringUtils.isEmpty;
 
 @Aspect
 @Component
-public class VerySmartCustomer {
+public class VerySmartCustomer implements Customer{
     private static final Log log = LogFactory.getLog(VerySmartCustomer.class);
     private Map<String, Integer> thingsCount = new HashMap<>();
-
-    @Pointcut("execution(* pl.sii.spring.aop.Shop.buy(..))")
-    public void buy() {
-    }
-
-    @Pointcut("execution(* pl.sii.spring.aop.Shop.addToBasket(String)) && args(name)")
-    public void addToBasket(String name) {
-    }
 
     @Before(value = "addToBasket(name)", argNames = "name")
     public void countThings(String name) {

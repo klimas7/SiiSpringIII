@@ -18,5 +18,6 @@ public class MessageEventListener implements ApplicationListener<MessageEvent> {
             log.error(e);
         }
         log.info("After sleep in Listener");
+        //throw new RuntimeException("ups!!");
     }
 }

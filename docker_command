@@ -15,7 +15,7 @@ NETWORK  [initandlisten] waiting for connections on port 27017
 
 docker exec -it sii-mongo bash
 # mongo
-> shows dbs
+> show dbs
 > use test
 > db.user.find()
 
