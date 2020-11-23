@@ -1,0 +1,20 @@
+spring:
+  cache:
+    redis:
+      time-to-live: 30000
+  redis:
+    host: localhost
+    port: 6379
+
+#    jcache:
+#      config: classpath:ehcache.xml
+
+
+server:
+  port: 8081
+
+logging:
+  level:
+    org:
+      springframework:
+        cache: trace
