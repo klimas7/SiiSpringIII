@@ -35,7 +35,7 @@
         <swagger.version>2.9.2</swagger.version>
         <spring.boot.admin.version>2.1.6</spring.boot.admin.version>
         <activemq.version>5.15.11</activemq.version>
-        <h2.version>1.4.200</h2.version>
+        <h2.version>2.0.206</h2.version>
         <dbcp.version>2.6.0</dbcp.version>
         <cache-api.vaersion>1.1.1</cache-api.vaersion>
         <ehcache.version>3.9.0</ehcache.version>
